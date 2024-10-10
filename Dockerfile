@@ -13,15 +13,15 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /code
 
 # 의존성 파일 복사 및 설치
-COPY requirements.txt /code/
+COPY backend/requirements.txt /code/
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 # 소스 코드 복사
-COPY . /code/
+COPY backend /code/
 
 # 권한 설정 (예: /code 디렉토리와 하위 디렉토리/파일에 대해 권한 설정)
-#RUN chmod -R 755 /code
+RUN chmod -R 755 /code
 
 # Django 서버 실행 - gunicorn 사용
 CMD ["gunicorn", "--bind", "0.0.0.0:8000", "BlackWhiteChef.wsgi:application"]

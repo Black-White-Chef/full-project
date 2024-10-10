@@ -17,7 +17,7 @@ env.bak/
 venv.bak/
 
 # 환경 변수 파일
-.env
+../.env
 BWChef.pem
 
 # Django 관련
