@@ -1,0 +1,93 @@
+.modalContainer {
+  position: fixed;
+  bottom: 90px;
+  right: 10px;
+  z-index: 10;
+}
+
+.modal {
+  width: 19em;
+  /* height: 200px; */
+  padding: 1em;
+  position: absolute;
+  bottom: 50px;
+  right: 5px;
+  /*border-top-left-radius: 20px;
+  border-top-right-radius: 20px;*/
+  border-radius: 20px;
+  background-color: #f1f1eb;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* 초기 설정 */
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.modal.show {
+  /* 모달이 보일 때 적용되는 스타일 */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal.hide {
+  /* 모달이 숨길 때 적용되는 스타일 */
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.modal h3 {
+  margin-bottom: 0;
+}
+
+.modal h4 {
+  margin-top: 0;
+}
+
+.nickNameForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submitForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.nicknameLabel,
+.commentLabel {
+  display: flex;
+  align-items: center;
+}
+
+.nicknameInput,
+.commentInput {
+  flex: 1;
+  padding: 0.3em 0.5em;
+}
+
+/* .commentLabel {
+  margin: 10px 10px;
+} */
+
+/* .commentInput {
+  width: 80px;
+  height: 40px;
+} */
+
+.sbtn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.sbtn:hover {
+  background-color: #896fc7;
+}

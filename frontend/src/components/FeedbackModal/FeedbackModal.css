@@ -1,0 +1,113 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(63, 59, 59, 0.5);
+}
+
+.feedbackContainer {
+  width: 75%;
+  max-width: 40em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 300;
+  background-color: #fff;
+  box-shadow: 0px 0px 40px 10px black;
+  padding: 1.5em;
+}
+
+.feedbackContainer h3 {
+  margin: 5px;
+}
+
+.feedbackContainer p {
+  font-size: 1em;
+}
+
+.feedbackFrom {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.feedbackInput {
+  width: 100%;
+  height: 18.75em;
+  border: 1px solid #000000;
+  padding: 10px;
+  font-size: 1em;
+  resize: none;
+}
+
+.FeedbackSbtn {
+  border: none;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  text-transform: uppercase;
+  outline: none;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1em;
+  background-color: #222;
+  padding: 17px 60px;
+  /* margin: 20px 0 0 0; */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.FeedbackSbtn span {
+  position: relative;
+  z-index: 1;
+}
+
+.FeedbackSbtn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 490%;
+  width: 140%;
+  background: #78c7d2;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+  transform: translateX(-98%) translateY(-25%) rotate(45deg);
+}
+
+.FeedbackSbtn:hover:after {
+  -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+  transform: translateX(-9%) translateY(-25%) rotate(45deg);
+}
+
+.FeedbackCbtn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  font-size: 15px;
+  color: rgba(128, 128, 128, 0.784);
+  background-color: #fff;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.FeedbackCbtn:hover {
+  background-color: #cdcdcd;
+}

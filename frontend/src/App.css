@@ -1,0 +1,134 @@
+.jchef {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 2em;
+  margin: 0 auto;
+
+  box-shadow: 0 0 28px 5px rgba(255, 255, 255, 0.3),
+    /* 밝은 그림자 */ 0 0 28px 5px rgba(0, 0, 0, 0.2),
+    /* 어두운 그림자 */ 0 0 10px 2px rgba(255, 255, 255, 0.2),
+    /* 추가 밝은 그림자 */ 0 0 10px 2px rgba(0, 0, 0, 0.15); /* 추가 어두운 그림자 */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.wchef,
+.bchef {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  gap: 40px 20px;
+  /* overflow: hidden; */
+}
+
+.chefList {
+  width: 100%;
+  height: 23em;
+  position: relative;
+  cursor: pointer;
+}
+.chefList.white {
+  box-shadow: 0 0 28px 5px rgba(255, 255, 255, 0.25),
+    0 0 10px 2px rgba(255, 255, 255, 0.22);
+}
+.chefList.black {
+  box-shadow: 0 0 28px 5px rgba(0, 0, 0, 0.25), 0 0 10px 2px rgba(0, 0, 0, 0.22);
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  /* min-width: 300px; */
+  height: 100%;
+}
+
+.imageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.mouse {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(42, 40, 40, 0.618);
+  color: white;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.imageContainer:hover .mouse {
+  opacity: 1;
+}
+
+.mouse h1 {
+  margin: 10px 15px;
+}
+
+.mouse p {
+  margin: 10px 15px;
+  text-align: center;
+}
+.mouse .infoMsg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0.8em;
+}
+
+@media (max-width: 480px) {
+  .jchef {
+    width: 80%;
+    /* padding: 0.5em; */
+    gap: 15px;
+  }
+
+  /* .container {
+    gap: 20px;
+  } */
+
+  .wchef,
+  .bchef {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 20px;
+  }
+  .container {
+    gap: 20px;
+  }
+
+  /* .imageContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  } */
+
+  /* .mouse {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    background-color: rgba(42, 40, 40, 0.618);
+    color: white;
+    opacity: 0;
+  } */
+}
