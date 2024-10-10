@@ -1,0 +1,12 @@
+# .dockerignore
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+*.db
+*.log
+*.env
+node_modules/
+*.tar
+*.zip
+mysql_data
