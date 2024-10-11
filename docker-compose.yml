@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   db:
@@ -33,12 +33,13 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Nginx 설정 파일 마운트
-      - /frontend/dist:/code/frontend/dist          # 프론트엔드 빌드 파일 경로 마운트
-      - ./backend/staticfiles:/code/staticfiles              # 정적 파일 경로 마운트
-      - ./backend/mediafiles:/code/mediafiles                # 미디어 파일 경로 마운트
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf # Nginx 설정 파일 마운트
+      - ./frontend/dist:/usr/share/nginx/html # 프론트엔드 빌드 파일 경로 마운트 (변경)
+      - ./backend/staticfiles:/code/staticfiles # 정적 파일 경로 마운트
+      - ./backend/mediafiles:/code/mediafiles # 미디어 파일 경로 마운트
+
     environment:
-      SERVER_NAME: ${DJANGO_ALLOWED_HOSTS}  # 환경 변수 설정
+      SERVER_NAME: ${DJANGO_ALLOWED_HOSTS} # 환경 변수 설정
     depends_on:
       - web
     command: /bin/sh -c "nginx -g 'daemon off;'"

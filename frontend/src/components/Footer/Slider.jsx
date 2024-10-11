@@ -3,7 +3,7 @@ import "./Slider.scss";
 import axios from "axios";
 
 export default function Slider() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  // const API_URL = import.meta.env.VITE_API_URL;
   const [data, setData] = useState([]);
   const isFetching = useRef(false); // API 재호출을 제어하는 플래그
 
@@ -11,7 +11,7 @@ export default function Slider() {
     if (!isFetching.current) {
       isFetching.current = true; // API 호출 중임을 표시
       try {
-        const res = await axios.get(`${API_URL}/api/v1/comments/all/`);
+        const res = await axios.get(`/api/v1/comments/all/`);
         setData(res.data.data);
         // console.log("api 호출!!!");
       } catch (error) {
@@ -39,12 +39,18 @@ export default function Slider() {
       <div className="slider-wrapper">
         <div className="slider">
           <div className="slide-track slide-track-t">
-            {data.map((item) => (
-              <div className="slide" key={item.id}>
-                {item.comment}
-                <span className="name">-{item.nickname}</span>
-              </div>
-            ))}
+            {Array.isArray(data) &&
+              data.length > 0 &&
+              data.map(
+                (
+                  item // data가 배열인지 확인
+                ) => (
+                  <div className="slide" key={item.id}>
+                    {item.comment}
+                    <span className="name">-{item.nickname}</span>
+                  </div>
+                )
+              )}
 
             {/* {texts.concat(texts).map((text, index) => (
               <div className="slide" key={index}>
@@ -55,12 +61,18 @@ export default function Slider() {
         </div>
         <div className="slider">
           <div className="slide-track slide-track-b">
-            {data.map((item) => (
-              <div className="slide" key={item.id}>
-                {item.comment}
-                <span className="name">-{item.nickname}</span>
-              </div>
-            ))}
+            {Array.isArray(data) &&
+              data.length > 0 &&
+              data.map(
+                (
+                  item // data가 배열인지 확인
+                ) => (
+                  <div className="slide" key={item.id}>
+                    {item.comment}
+                    <span className="name">-{item.nickname}</span>
+                  </div>
+                )
+              )}
             {/* {texts.concat(texts).map((text, index) => (
               <div className="slide" key={index}>
                 {text}
