@@ -10,7 +10,7 @@ import SendIcon from "@mui/icons-material/Send";
 import axios from "axios";
 
 export default function Modal() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  // const API_URL = import.meta.env.VITE_API_URL;
   const [modal, setModal] = useState(false);
   const [isNickname, setIsNickname] = useState(""); // 닉네임 생성
   const [isDisabled, setIsDisabled] = useState(false); // 버튼 비활성화 상태 추가
@@ -23,7 +23,7 @@ export default function Modal() {
   const createNicknameHandler = (e) => {
     e.preventDefault();
     axios
-      .post(`${API_URL}/api/v1/nicknames/`, {
+      .post(`/api/v1/nicknames/`, {
         nickname: isNickname,
       })
       .then((res) => {
@@ -37,16 +37,16 @@ export default function Modal() {
   // 응원 메세지 생성 함수
   const handleModal = (e) => {
     e.preventDefault();
-    console.log("Nickname:", nickname);
-    console.log("Comment:", comment);
+    // console.log("Nickname:", nickname);
+    // console.log("Comment:", comment);
 
     axios
-      .post(`${API_URL}/api/v1/comments/`, {
+      .post(`/api/v1/comments/`, {
         nickname,
         comment_text: comment,
       })
-      .then((res) => {
-        console.log(res);
+      .then(() => {
+        // console.log(res);
 
         // 버튼 비활성화 및 카운트다운 시작
         setIsButtonDisabled(true);

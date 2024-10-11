@@ -4,7 +4,7 @@ import "./FeedbackModal.css";
 import axios from "axios";
 
 export default function EFeedbackModal() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  // const API_URL = import.meta.env.VITE_API_URL;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [feedback, setFeedback] = useState("");
 
@@ -24,7 +24,7 @@ export default function EFeedbackModal() {
 
   const handleFeedback = (e) => {
     e.preventDefault();
-    axios.post(`${API_URL}/api/v1/feedbacks/`, {
+    axios.post(`/api/v1/feedbacks/`, {
       feedback,
     });
     setFeedback("");
