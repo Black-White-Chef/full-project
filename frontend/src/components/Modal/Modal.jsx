@@ -1,21 +1,16 @@
-import { useState } from "react";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
-import "./Modal.css";
-import TextField from "@mui/material/TextField";
-import InputAdornment from "@mui/material/InputAdornment";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import Button from "@mui/material/Button";
-import SendIcon from "@mui/icons-material/Send";
-import axios from "axios";
+import { useState } from 'react';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import './Modal.css';
+import axios from 'axios';
 
 export default function Modal() {
   // const API_URL = import.meta.env.VITE_API_URL;
   const [modal, setModal] = useState(false);
-  const [isNickname, setIsNickname] = useState(""); // 닉네임 생성
+  const [isNickname, setIsNickname] = useState(''); // 닉네임 생성
   const [isDisabled, setIsDisabled] = useState(false); // 버튼 비활성화 상태 추가
-  const [nickname, setNickname] = useState(""); // 응원 닉네임
-  const [comment, setComment] = useState(""); // 응원 메세지
+  const [nickname, setNickname] = useState(''); // 응원 닉네임
+  const [comment, setComment] = useState(''); // 응원 메세지
   const [isButtonDisabled, setIsButtonDisabled] = useState(false); // 버튼 비활성화 상태
   const [countdown, setCountdown] = useState(0); // 카운트다운 상태
 
@@ -67,8 +62,8 @@ export default function Modal() {
         setModal(false);
 
         // 입력 값 초기화
-        setNickname("");
-        setComment("");
+        setNickname('');
+        setComment('');
       })
       .catch((err) => alert(err.response.data.nickname));
 
@@ -88,76 +83,55 @@ export default function Modal() {
             setModal((prev) => !prev);
           }}
         >
-          {modal ? "" : ""}
+          {modal ? '' : ''}
           <AddIcon />
         </Fab>
         {/* {modal && ( */}
-        <div className={`modal ${modal ? "show" : "hide"}`}>
-          <h3>응원 메세지를 입력해주세요!</h3>
-          <h4>Please enter a message of support!!</h4>
-          <form className="nickNameForm" onSubmit={createNicknameHandler}>
-            <TextField
-              id="outlined-basic"
-              label="Create Nickname"
-              variant="outlined"
-              size="small"
+        <div className={`modal ${modal ? 'show' : 'hide'}`}>
+          <div className="MH">
+            <h3>응원 메세지를 입력해주세요!</h3>
+            <h4>Please enter a message of support!!</h4>
+          </div>
+          <div className="nickNameCreate" onSubmit={createNicknameHandler}>
+            <input
+              className="CNI"
               onChange={(e) => setIsNickname(e.target.value)}
-              required
+              placeholder="Create a nickname"
             />
-            <Button
+            <button
+              className="CNIB"
               type="submit"
               // onClick={createNicknameHandler}
-              variant="outlined"
-              size="medium"
               disabled={isDisabled} // 버튼 상태 관리
             >
-              Create
-            </Button>
-          </form>
+              +
+            </button>
+          </div>
           <form className="submitForm" onSubmit={handleModal}>
-            <TextField
+            <input
               className="nicknameInput"
               label="Nickname"
-              multiline
-              size="small"
-              value={nickname}
-              onChange={(e) => setNickname(e.target.value)}
-              slotProps={{
-                input: {
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <AccountCircle />
-                    </InputAdornment>
-                  ),
-                },
-              }}
-              variant="standard"
               required
+              placeholder="Nickname"
             />
-            <br />
-            <TextField
+            <textarea
               className="commentInput"
-              label="Comments"
-              multiline
-              rows={4}
               // defaultValue=""
-              variant="filled"
               placeholder="Comments"
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               required
             />
-            <br />
-            <Button
-              type="submit"
-              className="sbtn"
-              variant="contained"
-              endIcon={<SendIcon />}
-              disabled={isButtonDisabled} // 버튼 비활성화 상태에 따라 비활성화
-            >
-              Submit {isButtonDisabled && `(${countdown})`}{" "}
-              {/* 버튼 비활성화 시 카운트다운 표시 */}
-            </Button>
+            <div className="btnc">
+              <button
+                type="submit"
+                className="sbtn"
+                disabled={isButtonDisabled} // 버튼 비활성화 상태에 따라 비활성화
+              >
+                SUBMIT {isButtonDisabled && `(${countdown})`}{' '}
+                {/* 버튼 비활성화 시 카운트다운 표시 */}
+              </button>
+            </div>
           </form>
         </div>
         {/* )} */}
