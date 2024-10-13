@@ -1,5 +1,5 @@
-$animationSpeedTop: 45s;
-$animationSpeedBottom: 35s;
+// $animationSpeedTop: 45s;
+// $animationSpeedBottom: 35s;
 
 // Animation
 @keyframes scroll {
@@ -16,8 +16,8 @@ $animationSpeedBottom: 35s;
   position: fixed;
   bottom: 0;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   z-index: 1000;
 }
 
@@ -35,8 +35,11 @@ $animationSpeedBottom: 35s;
 
   .slide-track {
     display: flex;
-    width: calc(200px * 12);
+    // width: calc(200px * 5);
     position: relative;
+    width: max-content;
+    display: flex;
+    white-space: nowrap;
   }
 
   .slide-track-t,
@@ -46,11 +49,11 @@ $animationSpeedBottom: 35s;
   }
 
   .slide-track-t {
-    animation: scroll $animationSpeedTop linear infinite;
+    animation: scroll 45s linear infinite;
   }
 
   .slide-track-b {
-    animation: scroll $animationSpeedBottom linear infinite;
+    animation: scroll 35s linear infinite;
   }
 
   .slide {
@@ -60,6 +63,7 @@ $animationSpeedBottom: 35s;
     height: 40px;
     padding: 0 10px;
     line-height: 40px;
+    width: 100%;
 
     .name {
       color: #763b7c;
