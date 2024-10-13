@@ -6,3 +6,4 @@ python-decouple
 drf-yasg
 gunicorn
 django-cors-headers
+django-prometheus

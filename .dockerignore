@@ -10,3 +10,7 @@ node_modules/
 *.tar
 *.zip
 mysql_data
+
+backend/mysql_data
+backend/staticfiles
+backend/mediafiles

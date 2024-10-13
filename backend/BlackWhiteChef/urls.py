@@ -19,6 +19,7 @@ schema_view = get_schema_view(
 
 #swagger -> api/swagger/
 urlpatterns = [
+    path('', include('django_prometheus.urls')),
     path('api/swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),  # Swagger UI를 제공하는 URL
     path('api/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),  # Redoc UI를 제공하는 URL
     path('admin/', admin.site.urls),
