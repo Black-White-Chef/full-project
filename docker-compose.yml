@@ -13,6 +13,8 @@ services:
       - "3306:3306"
     volumes:
       - ./backend/mysql_data:/var/lib/mysql
+    networks:
+      my_custom_network:
 
   web:
     build: .
@@ -21,27 +23,34 @@ services:
     volumes:
       - ./backend:/code
     ports:
-      - "8000:8000"
+      - "8000"
     depends_on:
       - db
     env_file:
       - .env
+    networks:
+      my_custom_network:
 
   nginx:
     image: nginx:latest
     container_name: nginx
     ports:
       - "80:80"
+      - "443:443"  # HTTPS 포트 추가
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf  # 기존 nginx.conf 파일 그대로 유지
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./frontend/dist:/usr/share/nginx/html
       - ./backend/staticfiles:/code/staticfiles
       - ./backend/mediafiles:/code/mediafiles
+      - ./self-signed.crt:/etc/ssl/certs/self-signed.crt  # 인증서 마운트
+      - ./self-signed.key:/etc/ssl/private/self-signed.key  # 개인 키 마운트
     environment:
       SERVER_NAME: ${DJANGO_ALLOWED_HOSTS}
     depends_on:
       - web
     command: /bin/sh -c "nginx -g 'daemon off;'"
+    networks:
+      my_custom_network:
 
   prometheus:
     image: prom/prometheus:latest
@@ -52,6 +61,8 @@ services:
       - "9090:9090"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      my_custom_network:
 
   grafana:
     image: grafana/grafana:latest
@@ -62,18 +73,33 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
       - grafana-data:/var/lib/grafana
+    networks:
+      my_custom_network:
 
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
     ports:
       - "9100:9100"
+    networks:
+      my_custom_network:
 
   nginx-exporter:
     image: nginx/nginx-prometheus-exporter:latest
     container_name: nginx-exporter
     ports:
       - "9113:9113"
-    command: -nginx.scrape-uri=http://nginx:80/stub_status
+    command:
+      - --nginx.scrape-uri=https://nginx:443/stub_status  # HTTPS로 변경
+    networks:
+      my_custom_network:
+
 volumes:
   grafana-data:
+
+networks:
+  my_custom_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16  # 고정된 서브넷 설정

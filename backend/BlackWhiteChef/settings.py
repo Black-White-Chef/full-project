@@ -83,6 +83,9 @@ DATABASES = {
 }
 
 SWAGGER_SETTINGS = {
+    'USE_HTTPS': True,  # HTTPS 사용
+    'DEFAULT_API_URL': 'https://localhost/api/',
+    'schemes': ['https'],  # 기본 스키마를 HTTPS로 설정
     'USE_SESSION_AUTH': False,
     'SECURITY_DEFINITIONS': {
         'Token': {
@@ -138,3 +141,6 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True  # 이 설정은 HTTP 요청을 HTTPS로 리디렉션하는 역할을 합니다.

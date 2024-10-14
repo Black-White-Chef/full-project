@@ -2,3 +2,5 @@
 .idea
 .env
 BWChef.pem
+self-signed.crt
+self-signed.key
