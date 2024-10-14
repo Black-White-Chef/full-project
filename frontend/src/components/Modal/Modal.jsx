@@ -24,7 +24,6 @@ export default function Modal() {
       .then((res) => {
         if (res.status === 201) {
           setIsDisabled(true); // 성공 시 버튼 비활성화
-          setNickname(nickname); // 생성된 닉네임을 "응원 닉네임"에 삽입
         }
       })
       .catch((err) => alert(err.response.data.error));
@@ -99,6 +98,7 @@ export default function Modal() {
               className="CNI"
               onChange={(e) => setIsNickname(e.target.value)}
               placeholder="Create a nickname"
+              disabled={isDisabled}
             />
             <button
               className="CNIB"
