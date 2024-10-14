@@ -83,6 +83,11 @@
   background-color: #263331;
   color: #fff;
 }
+.sucessMsg {
+  margin: 0;
+  font-size: 0.875em;
+  color: #393939;
+}
 
 .submitForm {
   background-color: #cfe0de;
@@ -136,7 +141,7 @@
   font-size: 12px;
   width: 40%;
   background-color: #263331;
-  font-family: 'Pretendard-Regular';
+  font-family: "Pretendard-Regular";
   border-radius: 10px;
   border: 1px solid #ccc;
   color: #fff;
@@ -149,5 +154,5 @@
 .CNI::placeholder,
 .nicknameInput::placeholder,
 .commentInput::placeholder {
-  font-family: 'Pretendard-Regular';
+  font-family: "Pretendard-Regular";
 }

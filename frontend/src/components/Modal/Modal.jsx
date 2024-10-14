@@ -92,11 +92,13 @@ export default function Modal() {
             <h3>응원 메세지를 입력해주세요!</h3>
             <h4>Please enter a message of support!!</h4>
           </div>
+
           <form className="nickNameCreate" onSubmit={createNicknameHandler}>
             <input
               className="CNI"
               onChange={(e) => setIsNickname(e.target.value)}
               placeholder="Create a nickname"
+              disabled={isDisabled}
             />
             <button
               className="CNIB"
@@ -107,12 +109,24 @@ export default function Modal() {
               +
             </button>
           </form>
+          {isDisabled && (
+            <div>
+              <p className="sucessMsg">
+                닉네임 생성 성공! 응원 메세지를 작성해주세요.
+              </p>
+              <p className="sucessMsg">
+                Nickname creation success! Please write a message of support.
+              </p>
+            </div>
+          )}
           <form className="submitForm" onSubmit={handleModal}>
             <input
               className="nicknameInput"
               label="Nickname"
               required
               placeholder="Nickname"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
             />
             <textarea
               className="commentInput"
