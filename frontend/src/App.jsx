@@ -13,6 +13,8 @@ import EFeedbackModal from "./components/FeedbackModal/EFeedbackModal.jsx";
 
 function App() {
   const [isKorean, setIsKorean] = useState(true);
+  const [isUpdate, setIsupdate] = useState(false); // 응원메세지 입력시 슬라이더 데이터 업데이트
+
   useEffect(() => {
     AOS.init();
   }, []);
@@ -101,10 +103,10 @@ function App() {
         </div>
       </div>
       <section>
-        <Modal />
+        <Modal update={() => setIsupdate(true)} />
       </section>
       <footer>
-        <Slider />
+        <Slider update={isUpdate} setUpdate={setIsupdate} />
       </footer>
     </>
   );
