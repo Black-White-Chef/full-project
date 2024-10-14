@@ -4,7 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import "./Modal.css";
 import axios from "axios";
 
-export default function Modal() {
+export default function Modal({ update }) {
   // const API_URL = import.meta.env.VITE_API_URL;
   const [modal, setModal] = useState(false);
   const [isNickname, setIsNickname] = useState(""); // 닉네임 생성
@@ -42,6 +42,7 @@ export default function Modal() {
       })
       .then(() => {
         // console.log(res);
+        update(); // 슬라이더 업데이트 true로 설정
 
         // 버튼 비활성화 및 카운트다운 시작
         setIsButtonDisabled(true);
@@ -83,7 +84,6 @@ export default function Modal() {
             setModal((prev) => !prev);
           }}
         >
-          {modal ? "" : ""}
           <AddIcon />
         </Fab>
         {/* {modal && ( */}
