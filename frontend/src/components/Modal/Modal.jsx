@@ -4,7 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import "./Modal.css";
 import axios from "axios";
 
-export default function Modal() {
+export default function Modal({ update }) {
   // const API_URL = import.meta.env.VITE_API_URL;
   const [modal, setModal] = useState(false);
   const [isNickname, setIsNickname] = useState(""); // 닉네임 생성
@@ -42,6 +42,7 @@ export default function Modal() {
       })
       .then(() => {
         // console.log(res);
+        update(); // 슬라이더 업데이트 true로 설정
 
         // 버튼 비활성화 및 카운트다운 시작
         setIsButtonDisabled(true);
@@ -83,7 +84,6 @@ export default function Modal() {
             setModal((prev) => !prev);
           }}
         >
-          {modal ? "" : ""}
           <AddIcon />
         </Fab>
         {/* {modal && ( */}
@@ -92,11 +92,13 @@ export default function Modal() {
             <h3>응원 메세지를 입력해주세요!</h3>
             <h4>Please enter a message of support!!</h4>
           </div>
+
           <form className="nickNameCreate" onSubmit={createNicknameHandler}>
             <input
               className="CNI"
               onChange={(e) => setIsNickname(e.target.value)}
               placeholder="Create a nickname"
+              disabled={isDisabled}
             />
             <button
               className="CNIB"
@@ -107,12 +109,24 @@ export default function Modal() {
               +
             </button>
           </form>
+          {isDisabled && (
+            <div>
+              <p className="sucessMsg">
+                닉네임 생성 성공! 응원 메세지를 작성해주세요.
+              </p>
+              <p className="sucessMsg">
+                Nickname creation success! Please write a message of support.
+              </p>
+            </div>
+          )}
           <form className="submitForm" onSubmit={handleModal}>
             <input
               className="nicknameInput"
               label="Nickname"
               required
               placeholder="Nickname"
+              value={nickname}
+              onChange={(e) => setNickname(e.target.value)}
             />
             <textarea
               className="commentInput"

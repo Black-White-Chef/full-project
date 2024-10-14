@@ -19,6 +19,14 @@
   color: #fff;
   font-size: 0.7em;
 }
+.produceBy a {
+  text-decoration: none;
+  color: #fff;
+
+  &:hover {
+    color: #eb93f1;
+  }
+}
 
 .Lbtn {
   position: absolute;
