@@ -41,10 +41,10 @@ export default function Slider({ update, setUpdate }) {
     const calculateTrackWidth = () => {
       if (trackRef.current) {
         const trackWidth = trackRef.current.scrollWidth; // 트랙 전체의 너비
-        const viewportWidth = trackRef.current.clientWidth; // 보이는 영역의 너비
+        // const viewportWidth = trackRef.current.clientWidth; // 보이는 영역의 너비
 
-        const scrollDuration = Math.max(15, trackWidth / 160); // 트랙 너비에 기반해 애니메이션 속도 계산
-        const botDuration = Math.max(15, (trackWidth - viewportWidth) / 10); // 두 번째 트랙을 위한 속도 계산
+        const scrollDuration = Math.max(45, trackWidth / 100); // 트랙 너비에 기반해 애니메이션 속도 계산
+        const botDuration = Math.max(35, trackWidth / 160); // 두 번째 트랙을 위한 속도 계산
 
         setAnimationSpeed(scrollDuration); // 새로운 애니메이션 속도 설정
         setAnimationSpeedBOT(botDuration);
