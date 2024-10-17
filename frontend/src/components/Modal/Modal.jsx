@@ -135,6 +135,7 @@ export default function Modal({ update }) {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               required
+              maxLength="30"
             />
             <div className="btnc">
               <button
