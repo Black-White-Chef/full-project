@@ -61,7 +61,13 @@ function App() {
                 <img src={item.image} alt={item.name} />
                 <div
                   className="mouse"
-                  onClick={() => window.open(item.restaurant)}
+                  onClick={() => {
+                    if (!item.restaurant) return;
+
+                    isKorean
+                      ? window.open(item.restaurant)
+                      : window.open(item.Erestaurant);
+                  }}
                 >
                   <h1>{isKorean ? item.name : item.Ename}</h1>
                   <p>{isKorean ? item.detail : item.Edetail}</p>
@@ -88,7 +94,9 @@ function App() {
                   onClick={() => {
                     if (!item.restaurant) return;
 
-                    window.open(item.restaurant);
+                    isKorean
+                      ? window.open(item.restaurant)
+                      : window.open(item.Erestaurant);
                   }}
                 >
                   <h1>{isKorean ? item.name : item.Ename}</h1>
