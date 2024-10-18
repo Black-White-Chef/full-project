@@ -46,7 +46,7 @@ export default function Modal({ update }) {
 
         // 버튼 비활성화 및 카운트다운 시작
         setIsButtonDisabled(true);
-        setCountdown(10); // 카운트다운 10초로 설정
+        setCountdown(30); // 카운트다운 10초로 설정
 
         // 10초 카운트다운
         const countdownInterval = setInterval(() => {
