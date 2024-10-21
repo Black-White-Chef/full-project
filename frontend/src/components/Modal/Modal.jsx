@@ -46,7 +46,7 @@ export default function Modal({ update }) {
 
         // 버튼 비활성화 및 카운트다운 시작
         setIsButtonDisabled(true);
-        setCountdown(10); // 카운트다운 10초로 설정
+        setCountdown(30); // 카운트다운 10초로 설정
 
         // 10초 카운트다운
         const countdownInterval = setInterval(() => {
@@ -66,7 +66,7 @@ export default function Modal({ update }) {
         setNickname("");
         setComment("");
       })
-      .catch((err) => alert(err.response.data.nickname));
+      .catch((err) => alert(err.response.data.comment_text));
 
     // post 성공해야지 모달 내리고, input 내용 초기화
     // 갑자기 든 생각은 nickname으로 '닉네임 생성' 하고 댓글 생성할 때도 nickname으로 '댓글 생성'
@@ -135,6 +135,7 @@ export default function Modal({ update }) {
               value={comment}
               onChange={(e) => setComment(e.target.value)}
               required
+              maxLength="30"
             />
             <div className="btnc">
               <button
