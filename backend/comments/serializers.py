@@ -28,7 +28,8 @@ class CommentCreateSerializer(serializers.ModelSerializer):
         # 최근 1분 내에 댓글을 작성했는지 확인
         recent_comment = Comment.objects.filter(nickname=user).order_by('-created_at').first()
         if recent_comment and (timezone.now() - recent_comment.created_at) < timedelta(seconds=30):
-            raise serializers.ValidationError("1분 내에 댓글을 연속으로 작성할 수 없습니다.")
+          
+            raise serializers.ValidationError("30초내에 댓글을 연속으로 작성할 수 없습니다.")
 
         return value
 
